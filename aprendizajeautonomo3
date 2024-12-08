@@ -1,0 +1,74 @@
+# Función para verificar si un número es primo
+def es_primo(numero):
+    if numero <= 1:
+        return False  # Los números menores o iguales a 1 no son primos
+    for i in range(2, numero):
+        if numero % i == 0:
+            return False  # Si el número es divisible por cualquier número entre 2 y 'numero-1', no es primo
+    return True  # Si no fue divisible por ninguno, entonces es primo
+
+# Función para sumar los números dentro de un rango
+def suma_rango(inicio, fin):
+    suma = 0
+    # Bucle para sumar todos los números en el rango [inicio, fin]
+    for i in range(inicio, fin + 1):
+        suma += i
+    return suma
+
+# Función para imprimir todos los números en un rango
+def imprimir_rango(inicio, fin):
+    # Bucle que imprime todos los números entre 'inicio' y 'fin'
+    for i in range(inicio, fin + 1):
+        print(i, end=" ")
+    print()  # Para finalizar la línea después de imprimir todos los números
+
+# Menú interactivo con el usuario
+def menu():
+    while True:  # Bucle que permite al usuario seleccionar opciones repetidamente
+        # Imprimir opciones disponibles
+        print("----- MENÚ -----")
+        print("1. Verificar si un número es primo")
+        print("2. Sumar números en un rango")
+        print("3. Imprimir números en un rango")
+        print("4. Salir")
+        
+        # Solicitar opción del usuario
+        opcion = input("Seleccione una opción (1-4): ")
+        
+        # Validar la opción ingresada
+        if opcion == '1':
+            numero = int(input("Ingrese un número para verificar si es primo: "))
+            if es_primo(numero):
+                print(f"{numero} es un número primo.")
+            else:
+                print(f"{numero} no es un número primo.")
+        
+        elif opcion == '2':
+            inicio = int(input("Ingrese el valor de inicio del rango: "))
+            fin = int(input("Ingrese el valor final del rango: "))
+            # Validar si 'inicio' es menor que 'fin'
+            if inicio > fin:
+                print("El valor de inicio debe ser menor que el valor final.")
+            else:
+                resultado = suma_rango(inicio, fin)
+                print(f"La suma de los números en el rango de {inicio} a {fin} es: {resultado}")
+        
+        elif opcion == '3':
+            inicio = int(input("Ingrese el valor de inicio del rango: "))
+            fin = int(input("Ingrese el valor final del rango: "))
+            # Validar si 'inicio' es menor que 'fin'
+            if inicio > fin:
+                print("El valor de inicio debe ser menor que el valor final.")
+            else:
+                print(f"Los números entre {inicio} y {fin} son: ", end="")
+                imprimir_rango(inicio, fin)
+        
+        elif opcion == '4':
+            print("¡Hasta luego!")
+            break  # Salir del bucle y finalizar el programa
+        
+        else:
+            print("Opción inválida, por favor seleccione una opción entre 1 y 4.")
+
+# Llamar a la función del menú para ejecutar el programa
+menu()
