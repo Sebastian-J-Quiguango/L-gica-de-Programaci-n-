@@ -1,8 +1,3 @@
-
-Claro, aquí tienes una versión mejorada del código que utiliza una estructura if-else para controlar las condiciones dentro del programa:
-
-python
-Copiar código
 # Función para calcular la media de una lista de números
 def calcular_media(numeros):
     if len(numeros) > 0:
