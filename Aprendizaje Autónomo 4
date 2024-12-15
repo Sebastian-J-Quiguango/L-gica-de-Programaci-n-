@@ -1,0 +1,69 @@
+
+Claro, aquí tienes una versión mejorada del código que utiliza una estructura if-else para controlar las condiciones dentro del programa:
+
+python
+Copiar código
+# Función para calcular la media de una lista de números
+def calcular_media(numeros):
+    if len(numeros) > 0:
+        return sum(numeros) / len(numeros)
+    else:
+        return 0
+
+# Función para encontrar el número más frecuente en una lista
+def numero_mas_frecuente(numeros):
+    if len(numeros) == 0:
+        return None
+    
+    frecuencia = {}
+    for num in numeros:
+        if num in frecuencia:
+            frecuencia[num] += 1
+        else:
+            frecuencia[num] = 1
+    
+    return max(frecuencia, key=frecuencia.get)
+
+# Función principal
+def main():
+    # Solicitar al usuario que ingrese una lista de números
+    numeros = input("Ingresa una lista de números separados por espacios: ").split()
+
+    # Intentar convertir los números de string a enteros
+    try:
+        numeros = [int(num) for num in numeros]
+    except ValueError:
+        print("Por favor, ingresa solo números válidos.")
+        return
+
+    # Verificar si la lista no está vacía
+    if len(numeros) == 0:
+        print("La lista está vacía. No se puede realizar ninguna operación.")
+    else:
+        # Mostrar la media
+        media = calcular_media(numeros)
+        print(f"La media de los números es: {media}")
+
+        # Encontrar y mostrar el número más frecuente
+        mas_frecuente = numero_mas_frecuente(numeros)
+        if mas_frecuente is not None:
+            print(f"El número más frecuente es: {mas_frecuente}")
+        else:
+            print("No se pudo encontrar un número frecuente, ya que la lista está vacía.")
+        
+        # Crear un diccionario con la frecuencia de cada número
+        frecuencia = {}
+        for num in numeros:
+            if num in frecuencia:
+                frecuencia[num] += 1
+            else:
+                frecuencia[num] = 1
+
+        # Mostrar la frecuencia de cada número
+        print("Frecuencia de cada número:")
+        for num, freq in frecuencia.items():
+            print(f"{num}: {freq}")
+
+# Ejecutar el programa
+if __name__ == "__main__":
+    main()
